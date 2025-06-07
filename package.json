@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "tailwind": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -11,6 +12,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.8",
+    "hamburger-react": "^2.5.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.8"
