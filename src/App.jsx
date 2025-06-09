@@ -6,21 +6,21 @@ import Hamburger from 'hamburger-react'
 
 function BuildNavbarSection({ listMenu, isOpenHumbergerMenu, setHumbergerToggle }) {
   return <>
-    <div className='bg-white py-2 pl-7 pr-4 my-10 rounded-full md:max-w-7xl flex justify-between md:pl-10 md:pr-7 md:py-4 lg:mx-auto fixed -top-5 left-1/5 right-1/5 shadow-sm items-center'>
+    <div className='bg-white w-full py-2 pl-7 pr-4 sm:my-10 sm:rounded-full sm:max-w-xl lg:max-w-3xl flex justify-between md:pl-10 md:pr-7 md:py-3 sm:mx-auto fixed top-0 sm:-top-5 inset-x-0 sm:shadow-sm items-center'>
       <div>
-        <a href="#" className='text-3xl font-bold text-emerald-600 fl'>LOGO</a>
+        <a href="#" className='text-3xl font-bold text-teal-500 fl'>LOGO</a>
       </div>
 
       <div className='hidden lg:visible lg:flex gap-4'>
-        {listMenu.map((item, index) => <a href={item.url} key={index} className='text-slate-700'>{item.name}</a>)}
+        {listMenu.map((item, index) => <a href={item.url} key={index} className='text-slate-700 hover:text-teal-500'>{item.name}</a>)}
       </div>
       <div className='visible lg:hidden'>
         <div>
-          <Hamburger easing="ease-in" size={24} color="#314158" toggled={isOpenHumbergerMenu} toggle={setHumbergerToggle} />
+          <Hamburger easing="ease-in" size={24} color="#314158" toggled={isOpenHumbergerMenu} onToggle={(value) => setHumbergerToggle(value)} />
         </div>
         <div className={isOpenHumbergerMenu ? 'visible' : 'hidden'}>
           <div className='bg-white shadow-lg px-5 w-50 rounded-2xl absolute right-0 top-18 md:top-23'>
-            {listMenu.map((item, index) => <div className='my-5 text-slate-700' key={index}><a href={item.url} className=''>{item.name}</a></div>)}
+            {listMenu.map((item, index) => <div className='my-5 text-slate-700 hover:text-teal-500' key={index}><a href={item.url} className=''>{item.name}</a></div>)}
           </div>
         </div>
       </div>
@@ -32,19 +32,18 @@ function BuildNavbarSection({ listMenu, isOpenHumbergerMenu, setHumbergerToggle 
   </>
 }
 
-
 function BuildHeroSection() {
   return <div className='mx-10 lg:mx-20 md:mt-40 mt-30'>
     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
       <div className='w-full row-start-2 md:row-start-1'>
         <div className='mb-10'>
-          <p className='text-emerald-600 font-semibold'>Halo Semua 👋, saya </p>
+          <p className='text-teal-500 font-semibold'>Halo Semua 👋, saya </p>
           <p className='font-bold text-slate-700 text-3xl md:text-4xl'>Daeng Mhd El Faritsi </p>
           <p className='text-slate-500'>Front End & Mobile Developer</p>
           <h2 className='text-slate-700 mt-2'>Saya adalah Pengembang Mobile & Web yang saat ini bekerja sebagai Mobile Developer pada perusahaan Asuransi Jiwa di Jakarta, sekarang saya berharap dapat bekerja sama dengan Anda.</h2>
         </div>
 
-        <a href="#" className='bg-emerald-600 px-6 py-2 md:py-3 rounded-full text-white font-light'>Hubungi Saya</a>
+        <a href="#" className='bg-teal-500 hover:bg-teal-600 px-6 py-2 md:py-3 rounded-full text-white font-light'>Hubungi Saya</a>
       </div>
 
       <div className='flex justify-center'>
@@ -56,7 +55,7 @@ function BuildHeroSection() {
 
 function BuildAboutSection({ socialMedia }) {
   return <div className='mx-10 lg:mx-20 mt-20'>
-    <h1 className='text-emerald-600 font-semibold'>TENTANG SAYA</h1>
+    <h1 className='text-teal-500 font-semibold'>TENTANG SAYA</h1>
     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
       <div>
         <h1 className='text-3xl font-bold text-slate-700'>Yuk Belajar Web Programming!</h1>
@@ -85,9 +84,9 @@ function CustomSocialMediaIcon({ icon }) {
 
 function PortfolioSection({ projectList }) {
 
-  return <div className='mt-20 bg-white py-5  rounded-2xl md:rounded-none'>
+  return <div className='mt-20 bg-white py-5'>
     <div>
-      <h2 className='flex justify-center font-semibold text-emerald-600 text-xl mt-8'>Portfolio</h2>
+      <h2 className='flex justify-center font-semibold text-teal-500 text-xl mt-8'>Portfolio</h2>
       <h1 className='flex justify-center font-bold text-slate-700 text-4xl mt-1'>Project Terbaru</h1>
       <h3 className='flex justify-center text-slate-400 text-center mt-3 mx-5'>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h3>
       <h3 className='flex justify-center text-slate-400 text-center mx-5'>Repudiandae distinctioquo voluptate cum perferendis molestias.</h3>
@@ -112,6 +111,56 @@ function CustomPortfolioCard({ projectName, desc, image }) {
 
 
   </div>
+}
+
+function ClientSection({ clientTotal }) {
+  return <div className='bg-slate-800 p-5'>
+    <div className='md:max-w-2xl mx-auto'>
+      <h2 className='flex justify-center font-semibold text-teal-500 text-xl mt-8'>Client</h2>
+      <h1 className='text-white flex justify-center text-center text-4xl font-bold'>Yang Pernah Bekerjasama</h1>
+      <h3 className='mt-3 text-slate-500 flex justify-center text-center'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, eos dolorem alias distinctio vero esse.</h3>
+      <div className='flex flex-wrap gap-5 my-10 justify-center'>
+        {
+          clientTotal.map((item, index) => <div key={index} className='w-35 h-10 bg-slate-400 rounded-2xl '></div>)
+
+
+        }
+
+      </div>
+    </div>
+  </div>
+}
+
+function ContactSection() {
+  return <div>
+    <div className='md:max-w-2xl mx-auto p-5'>
+      <h2 className='flex justify-center font-semibold text-teal-500 text-xl mt-8'>Client</h2>
+      <h1 className='text-slate-700 flex justify-center text-center text-4xl font-bold'>Hubungi Kami</h1>
+      <h3 className='mt-3 text-slate-400 flex justify-center text-center'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, eos dolorem alias distinctio vero esse.</h3>
+      <InputForContactSection />
+    </div>
+  </div>
+}
+
+function InputForContactSection() {
+  return <form>
+    <div className='my-5'>
+      <label for="name" className='text-teal-500'>Nama</label>
+      <input type="text" id="name" name="name" className='bg-slate-200 w-full h-10 px-3 rounded-lg focus:outline-teal-500' />
+    </div>
+
+    <div className='my-5'>
+      <label for="email" className='text-teal-500'>Nama</label>
+      <input type="email" id="email" name="email" className='bg-slate-200 w-full h-10 px-3 rounded-lg focus:outline-teal-500' />
+    </div>
+
+    <div className='my-5'>
+      <label for="text-area" className='text-teal-500'>Pesan</label>
+      <textarea id="w3review" name="text-area" rows="4" cols="50" className='bg-slate-200 w-full px-3  py-2 rounded-lg focus:outline-teal-500 min-h-30' />
+    </div>
+
+    <input type="submit" value="Kirim" className='block mx-auto px-25 py-2 bg-teal-500 rounded-full text-white hover:bg-teal-600' />
+  </form>
 }
 
 export default function App() {
@@ -161,17 +210,14 @@ export default function App() {
     }
   ];
 
-  const setHumbergerToggle = () => {
-    setIsOpenHumbergerMenu(!isOpenHumbergerMenu);
-  };
-
-
   return (
     <>
-      <BuildNavbarSection listMenu={navbarListMenu} isOpenHumbergerMenu={isOpenHumbergerMenu} setHumbergerToggle={() => setHumbergerToggle()} />
+      <BuildNavbarSection listMenu={navbarListMenu} isOpenHumbergerMenu={isOpenHumbergerMenu} setHumbergerToggle={setIsOpenHumbergerMenu} />
       <BuildHeroSection />
       <BuildAboutSection socialMedia={socialMedia} />
       <PortfolioSection projectList={projectList} />
+      <ClientSection clientTotal={socialMedia} />
+      <ContactSection />
     </>
   )
 }
